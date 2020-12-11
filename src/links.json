@@ -1,8 +1,8 @@
 [
   {
     "name": "calc",
-    "class": "some zoom link here",
-    "form": "some google form here",
+    "class": "https://beavertonk12.zoom.us/j/92876523585?pwd=bkhuOVJxcnhXbG9qRkxtQVJTMHQ5UT09",
+    "form": "https://forms.gle/rw2B1UAsuV2sGDru9",
     "start": "08:30",
     "end": "09:40",
     "schedule": ["Monday", "Tuesday", "Thursday", "Friday"],
@@ -11,13 +11,13 @@
         "description": "First and Last Name",
         "action": "type",
         "selector": "input[aria-describedby=\"i2 i3\"]",
-        "content": "Bob Joe"
+        "content": "Shengdong Li"
       },
       {
         "description": "Number",
         "action": "type",
         "selector": "input[aria-describedby=\"i6 i7\"]",
-        "content": "123456"
+        "content": "415403"
       },
       {
         "description": "Class Period",
@@ -32,14 +32,14 @@
       {
         "description": "Submit",
         "action": "click",
-        "selector": "'[jsname=\"M2UYVd\"]'"
+        "selector": "[jsname=\"M2UYVd\"]"
       }
     ]
   },
   {
     "name": "at",
-    "class": "some zoom link here",
-    "form": "some google form here",
+    "class": "https://beavertonk12.zoom.us/j/98869968104?pwd=YjdkNnNQNHZiTFZHUlVIOXc2VVl4UT09",
+    "form": "https://forms.gle/wRDDMHHvZNYsqC3f9",
     "start": "09:50",
     "end": "11:00",
     "schedule": ["Monday", "Tuesday", "Thursday", "Friday"],
@@ -48,13 +48,13 @@
         "description": "First and Last Name",
         "action": "type",
         "selector": "input[aria-describedby=\"i2 i3\"]",
-        "content": "Bob Joe"
+        "content": "Shengdong Li"
       },
       {
         "description": "Number",
         "action": "type",
         "selector": "input[aria-describedby=\"i6 i7\"]",
-        "content": "123456"
+        "content": "415403"
       },
       {
         "description": "Class Period",
@@ -69,14 +69,14 @@
       {
         "description": "Submit",
         "action": "click",
-        "selector": "'[jsname=\"M2UYVd\"]'"
+        "selector": "[jsname=\"M2UYVd\"]"
       }
     ]
   },
   {
     "name": "span",
-    "class": "some zoom link here",
-    "form": "some google form here",
+    "class": "https://beavertonk12.zoom.us/j/97508028151?pwd=M3BsWjd5YWQzTEFsc2hrMk5lcjY0dz09",
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSejPLKjMVhURL_pd0uAJaNpr4EW9SyzjuR0zOwNGcdyBIVIcw/viewform?usp=sf_link",
     "start": "12:00",
     "end": "13:10",
     "schedule": ["Monday", "Tuesday", "Thursday", "Friday"],
@@ -85,13 +85,13 @@
         "description": "First and Last Name",
         "action": "type",
         "selector": "input[aria-describedby=\"i2 i3\"]",
-        "content": "Bob Joe"
+        "content": "Shengdong Li"
       },
       {
         "description": "Number",
         "action": "type",
         "selector": "input[aria-describedby=\"i6 i7\"]",
-        "content": "123456"
+        "content": "415403"
       },
       {
         "description": "Send Copy of Response",
@@ -101,14 +101,14 @@
       {
         "description": "Submit",
         "action": "click",
-        "selector": "'[jsname=\"M2UYVd\"]'"
+        "selector": "[jsname=\"M2UYVd\"]"
       }
     ]
   },
   {
     "name": "wh",
-    "class": "some zoom link here",
-    "form": "some google form here",
+    "class": "https://beavertonk12.zoom.us/j/99386018365?pwd=Z3hTNXJTWG45M3ZKL2VvdXdYV1NaZz09",
+    "form": "https://forms.gle/L3zgT58x3NCDoY3h9",
     "start": "13:20",
     "end": "14:30",
     "schedule": ["Monday", "Tuesday", "Thursday", "Friday"],
@@ -117,13 +117,13 @@
         "description": "First and Last Name",
         "action": "type",
         "selector": "input[aria-describedby=\"i2 i3\"]",
-        "content": "Bob Joe"
+        "content": "Shengdong Li"
       },
       {
         "description": "Number",
         "action": "type",
         "selector": "input[aria-describedby=\"i6 i7\"]",
-        "content": "123456"
+        "content": "415403"
       },
       {
         "description": "Class Period",
@@ -138,23 +138,23 @@
       {
         "description": "Submit",
         "action": "click",
-        "selector": "'[jsname=\"M2UYVd\"]'"
+        "selector": "[jsname=\"M2UYVd\"]"
       }
     ]
   },
   {
     "name": "advisory",
-    "class": "some zoom link here",
-    "form": "some google form here",
+    "class": "https://beavertonk12.zoom.us/j/97242068534?pwd=Qk95K2R2VDQ3ZEhXbGkxSWw0ZnE1QT09",
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSdGi4KvpDdZaJuEzDrnnz-3CcPScAYJNvPIP1MiJZofMnVICQ/viewform?usp=sf_link",
     "start": "08:30",
     "end": "33:40",
-    "schedule": ["Wednesday", "Friday"],
+    "schedule": ["Wednesday"],
     "automation": [
       {
         "description": "First and Last Name",
         "action": "type",
         "selector": "input[aria-describedby=\"i2 i3\"]",
-        "content": "Bob Joe"
+        "content": "Shengdong Li"
       },
       {
         "description": "Class Period",
@@ -169,7 +169,7 @@
       {
         "description": "Submit",
         "action": "click",
-        "selector": "'[jsname=\"M2UYVd\"]'"
+        "selector": "[jsname=\"M2UYVd\"]"
       }
     ]
   }
