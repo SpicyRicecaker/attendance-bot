@@ -1,5 +1,5 @@
 /* eslint-disable */
-import days from './days.js';
+import week from './days.js';
 import linker from './links.js';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
@@ -12,27 +12,20 @@ dotenv.config();
 
 // parse and compare minute hour string
 // given hours and minutes of the form
-const isInsideTime = (startTime: string, endTime: string, date: Date) => {
+const isInsideTime = (start: string, end: string, date: Date): boolean => {
   // Get start hour, start minutes, end hour, end minutes
-  const startStrs = [...startTime.split(':'), ...endTime.split(':')];
-  const startNums = startStrs.map((value) => parseInt(value, 10));
-  // let timeRange = {
-  //   startHour: startNums[0],
-  //   startMinutes: startNums[1],
-  //   endHour: startNums[2],
-  //   endMinutes: startNums[3],
-  // };
+  const s = [...start.split(":"), ...end.split(":")];
+  const e = s.map((value) => parseInt(value, 10));
   // Get the amount of time in class by subtracting start by endtime
-  const classTime =
-    startNums[2] * 60 + startNums[3] - (startNums[0] * 60 + startNums[1]);
+  const during = e[2] * 60 + e[3] -
+    (e[0] * 60 + e[1]);
   // Gets the amount of time between now and the beginning of class
-  const currentDiff =
-    date.getHours() * 60 +
+  const until = date.getHours() * 60 +
     date.getMinutes() -
-    (startNums[0] * 60 + startNums[1]);
+    (e[0] * 60 + e[1]);
   // If the time between now and the beginning of class is greater than -6 (5 min early)
   // but less than the full length of the actual class, then this class is within time
-  return currentDiff >= -6 && currentDiff <= classTime;
+  return until >= -9 && until <= during;
 };
 
 const asyncTimeout = (callback: any, time: number) =>
@@ -57,13 +50,13 @@ const signIntoGoogle = async (browser: Browser) => {
   return page.waitForNavigation();
 };
 
-const openZoomLink = async (browser: Browser, link: string): Promise<any> => {
-  const t = await browser.newPage();
-  await t.goto(link);
-  t.on('dialog', async (dialog: any) => {
-    await dialog.accept();
-  });
-};
+// const openZoomLink = async (browser: Browser, link: string): Promise<any> => {
+//   const t = await browser.newPage();
+//   await t.goto(link);
+//   t.on('dialog', async (dialog: any) => {
+//     await dialog.accept();
+//   });
+// };
 
 const openAllForms = async (browser: Browser, classes: any[]) => {
   for (let i = 0; i < classes.length; ++i) {
@@ -74,6 +67,18 @@ const openAllForms = async (browser: Browser, classes: any[]) => {
 };
 
 const main = async () => {
+  let pastOpened: Date;
+  // Try to read file for date
+  try {
+    pastOpened = new Date(JSON.parse(await Deno.readTextFile("date.json")).date);
+  } catch (e) {
+    // Make new date that isn't today
+    pastOpened = new Date();
+    pastOpened.setDate(pastOpened.getDate() - 1);
+    await Deno.writeTextFile("date.json", JSON.stringify({ date: pastOpened }));
+  }
+
+  // First instantiate browser and login
   const browser = await puppeteer.launch({ headless: false });
   await signIntoGoogle(browser);
 

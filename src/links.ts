@@ -1,20 +1,19 @@
 /* eslint-disable */
 // this file mostly serves just to find our links for class
 // import filereader and path
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
+import type { studentClass } from './types/types';
 
-const jsonPath:string = path.join(path.resolve(), 'src', 'links.json');
+const datePath: string = path.join(path.resolve(), 'src', 'date.json');
 
-const fsReadPromise = (filePath: string):Promise<string> =>
-  new Promise((resolve, reject) => {
+// Holds the filepath and also eventuall class
+class ClassDB {
+  fileJsonPath: string = path.join(path.resolve(), 'src', 'links.json');
+
+  readStudentClasses = async (filePath: string): Promise<studentClass[]> =>
     // First get the links.json file
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
-    });
-  });
+    JSON.parse(await fs.readFile(filePath, 'utf8'));
+}
 
-export default { jsonPath, fsReadPromise };
+export default { readStudentClasses };

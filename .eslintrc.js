@@ -28,10 +28,5 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    // Here for stupid line-break errors on windows
-    'linebreak-style': [
-      'error',
-      process.env.NODE_ENV === 'prod' ? 'unix' : 'windows',
-    ],
   },
 };
