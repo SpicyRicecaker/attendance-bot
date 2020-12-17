@@ -108,19 +108,23 @@ const main = async () => {
     // Get day of the week
     const todayDay = week.get(today.getDay());
 
-    // Open the browser
-    const browser = await puppeteer.launch({ headless: false });
-    // Sign into google
-    await signIntoGoogle(browser);
+    try {
+      // Open the browser
+      const browser = await puppeteer.launch({ headless: false });
+      // Sign into google
+      await signIntoGoogle(browser);
 
-    // Then fill out all attendance for classes today
-    await fillOutAllForms(browser, classDB.getClassesToday(todayDay));
+      // Then fill out all attendance for classes today
+      await fillOutAllForms(browser, classDB.getClassesToday(todayDay));
 
-    // Update our lastopened database
-    lastOpened.writeSelf(JSON.stringify({ date: today }));
-    
-    // Close the browser
-    await browser.close();
+      // Update our lastopened database
+      lastOpened.writeSelf(JSON.stringify({ date: today }));
+
+      // Close the browser
+      await browser.close();
+    } catch (e) {
+      console.log('something went wrong opening the browser...', e);
+    }
   }
 
   // First instantiate browser and login
