@@ -2,7 +2,8 @@
 # Set directory of autzoom_node by getting filename, then evaluating directory
 set DIR (dirname (status --current-filename))
 # Add some formatting
-echo "-----------[new entry]-----------" >> output.txt
+echo "
+-----------[new entry]-----------" >> output.txt
 # Run our class command there, append to output
 yarn --cwd $DIR class >> output.txt
 echo "--------------[date]-------------" >> output.txt
