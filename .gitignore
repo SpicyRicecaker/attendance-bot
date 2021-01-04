@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/src/links.json
+/date.json
+
+/.env
+/output.txt
