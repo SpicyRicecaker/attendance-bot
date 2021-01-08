@@ -67,6 +67,13 @@ const fillOutAllForms = async (browser: Browser, classes: any[]) => {
     await t.waitForNavigation();
     // Next loop through all of our automation steps
     for (let j = 0; j < classes[i].automation.length; j++) {
+      // Debug
+      // Don't press submit if we're just testing lol
+      //if (classes[i].automation[j].description === "Submit") {
+      //  continue;
+      //}
+      
+
       // Is it a button or a text area?
       switch (classes[i].automation[j].action) {
         case 'type': {
@@ -121,7 +128,7 @@ const main = async () => {
       lastOpened.writeSelf(JSON.stringify({ date: today }));
 
       // Close the browser
-      await browser.close();
+      // await browser.close();
     } catch (e) {
       console.log('something went wrong opening the browser...', e);
     }
