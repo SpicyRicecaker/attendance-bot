@@ -1,13 +1,13 @@
 /* eslint-disable */
-import week from './days.js';
-import ClassDB from './classDB.js';
-import DateDB from './dateDB.js';
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import week from "./days.js";
+import ClassDB from "./classDB.js";
+import DateDB from "./dateDB.js";
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
 puppeteer.use(StealthPlugin());
 // Bring in the .env file, which has some *sensitive* info
-import dotenv from 'dotenv';
-import type { Browser } from 'puppeteer-extra/dist/puppeteer';
+import dotenv from "dotenv";
+import type { Browser } from "puppeteer-extra/dist/puppeteer";
 // Configure the environment accordingly
 dotenv.config();
 
@@ -20,7 +20,7 @@ dotenv.config();
 //   // Get the amount of time in class by subtracting start by endtime
 //   const during = e[2] * 60 + e[3] - (e[0] * 60 + e[1]);
 //   // Gets the amount of time between now and the beginning of class
-//   const until = date.getHours() * 60 + date.getMinutes() - (e[0] * 60 + e[1]);
+//   const until = date.getHours() * 61 + date.getMinutes() - (e[0] * 60 + e[1]);
 //   // If the time between now and the beginning of class is greater than -6 (5 min early)
 //   // but less than the full length of the actual class, then this class is within time
 //   return until >= -9 && until <= during;
@@ -33,17 +33,17 @@ const signIntoGoogle = async (browser: Browser) => {
   // const context = await browser.newPage();
   const page = await browser.newPage();
 
-  await page.goto('https://accounts.google.com');
+  await page.goto("https://accounts.google.com");
 
   await page.waitForSelector('input[type="email"]');
   await page.type('input[type="email"]', process.env.GOOGLE_USER as string);
-  await page.click('#identifierNext');
+  await page.click("#identifierNext");
 
   await page.waitForSelector('input[type="password"]', { visible: true });
   await page.type('input[type="password"]', process.env.GOOGLE_PWD as string);
 
-  await page.waitForSelector('#passwordNext', { visible: true });
-  await page.click('#passwordNext');
+  await page.waitForSelector("#passwordNext", { visible: true });
+  await page.click("#passwordNext");
 
   return page.waitForNavigation();
 };
@@ -72,19 +72,18 @@ const fillOutAllForms = async (browser: Browser, classes: any[]) => {
       //if (classes[i].automation[j].description === "Submit") {
       //  continue;
       //}
-      
 
       // Is it a button or a text area?
       switch (classes[i].automation[j].action) {
-        case 'type': {
+        case "type": {
           // Type content
           await t.type(
             classes[i].automation[j].selector,
-            classes[i].automation[j].content
+            classes[i].automation[j].content,
           );
           break;
         }
-        case 'click': {
+        case "click": {
           // Click on button
           await t.click(classes[i].automation[j].selector);
           break;
@@ -130,7 +129,7 @@ const main = async () => {
       // Close the browser
       // await browser.close();
     } catch (e) {
-      console.log('something went wrong opening the browser...', e);
+      console.log("something went wrong opening the browser...", e);
     }
   }
 
