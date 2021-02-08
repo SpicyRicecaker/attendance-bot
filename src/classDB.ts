@@ -2,7 +2,8 @@
 // import filereader and path
 import { promises as fs } from 'fs';
 import path from 'path';
-import type { studentClass } from './types/types';
+// @ts-ignore: The usual
+import type { studentClass } from './types/types.ts';
 
 // Holds the filepath and also eventuall class
 class ClassDB {

@@ -1,10 +1,9 @@
 # Generated files from compilation
 /node_modules
-/dist
+/build
 
 # Preserve Secrets
 /src/links.json
-/date.json
 /.env
 
 # Not needed anymore

@@ -3,10 +3,14 @@ import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import dotenv from 'dotenv';
 // Bring in the .env file, which has some *sensitive* info
-import ClassDB from './classDB.js';
-import DateDB from './dateDB.js';
-import type { Config } from './types/types';
-import initConfig from './config.js';
+// @ts-ignore: Importing .ts
+import ClassDB from './classDB.ts';
+// @ts-ignore: Importing .ts
+import DateDB from './dateDB.ts';
+// @ts-ignore: Importing .ts
+import type { Config } from './types/types.ts';
+// @ts-ignore: Importing .ts
+import initConfig from './config.ts';
 
 // Configure puppeteer
 puppeteer.use(StealthPlugin());
@@ -38,8 +42,9 @@ const fillOutAllForms = async (
   classes: any[],
   config: Config
 ) => {
+  /* eslint-disable no-await-in-loop */
   // Loop through all of our classes today
-  for (let i = 0; i < classes.length; ++i) {
+  for (let i = 0; i < classes.length; i += 1) {
     // Open a new tab
     const t = await browser.newPage();
     // Open that classes' google form
@@ -47,37 +52,36 @@ const fillOutAllForms = async (
     // The Google form navigates so you have to wait
     await t.waitForNavigation();
     // Next loop through all of our automation steps
-    for (let j = 0; j < classes[i].automation.length; j++) {
-      // Debug
-      // Don't press submit if we're just testing lol
+    for (let j = 0; j < classes[i].automation.length; j += 1) {
+      // If the description of the current selector is not a submit button,
+      // or we're submitting every form, complete every action
       if (
-        classes[i].automation[j].description === 'Submit' &&
-        config.noSubmit
+        classes[i].automation[j].description !== 'Submit' ||
+        !config.noSubmit
       ) {
-        continue;
-      }
-
-      // Is it a button or a text area?
-      switch (classes[i].automation[j].action) {
-        case 'type': {
-          // Type content
-          await t.type(
-            classes[i].automation[j].selector,
-            classes[i].automation[j].content
-          );
-          break;
-        }
-        case 'click': {
-          // Click on button
-          await t.click(classes[i].automation[j].selector);
-          break;
-        }
-        default: {
-          break;
+        // Is it a button or a text area?
+        switch (classes[i].automation[j].action) {
+          case 'type': {
+            // Type content
+            await t.type(
+              classes[i].automation[j].selector,
+              classes[i].automation[j].content
+            );
+            break;
+          }
+          case 'click': {
+            // Click on button
+            await t.click(classes[i].automation[j].selector);
+            break;
+          }
+          default: {
+            break;
+          }
         }
       }
     }
   }
+  /* eslint-enable no-await-in-loop */
   // await browser.close();
 };
 
@@ -90,7 +94,6 @@ const help = (config: Config) => {
 
 const main = async (config: Config) => {
   if (config.help) {
-    console.log('u r bad');
     help(config);
     return;
   }

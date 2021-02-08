@@ -1,4 +1,5 @@
-import type { Config } from './types/types';
+// @ts-ignore
+import type { Config } from './types/types.ts';
 
 // Get config from cmd
 const init = (): Config => {
@@ -10,7 +11,7 @@ const init = (): Config => {
     help: false,
   };
 
-  let config: Config = {
+  const config: Config = {
     irregular: false,
     redo: false,
     noSubmit: false,
@@ -20,7 +21,7 @@ const init = (): Config => {
   // Loop through all console args, skipping the first two
   // Can also just erase duplicates but I'm too lazy
   for (let i = 2; i < process.argv.length; i += 1) {
-    console.log(`i is ${i}, value is ${process.argv[i]}`);
+    console.log(`flag ${i} is ${process.argv[i]}`);
     switch (process.argv[i]) {
       case 'noSubmit': {
         config.noSubmit = !DEFAULTCONFIG.noSubmit;
@@ -44,7 +45,7 @@ const init = (): Config => {
       }
     }
   }
-  console.log('ok, config is', config);
+  console.log('Final config is', config);
 
   return config;
 };
