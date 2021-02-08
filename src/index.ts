@@ -86,8 +86,10 @@ const fillOutAllForms = async (
 };
 
 const help = (config: Config) => {
+  // eslint-disable-next-line no-console
   console.log('Available flags:');
   Object.keys(config).forEach((key) => {
+    // eslint-disable-next-line no-console
     console.log(key);
   });
 };
@@ -98,6 +100,7 @@ const main = async (config: Config) => {
     return;
   }
   if (config.error) {
+    // eslint-disable-next-line no-console
     console.log('Unrecognized option, `help` for help');
     return;
   }
@@ -136,6 +139,7 @@ const main = async (config: Config) => {
       // Close the browser
       // await browser.close();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('something went wrong opening the browser...', e);
     }
   }

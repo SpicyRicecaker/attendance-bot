@@ -21,6 +21,7 @@ const init = (): Config => {
   // Loop through all console args, skipping the first two
   // Can also just erase duplicates but I'm too lazy
   for (let i = 2; i < process.argv.length; i += 1) {
+    // eslint-disable-next-line no-console
     console.log(`flag ${i} is ${process.argv[i]}`);
     switch (process.argv[i]) {
       case 'noSubmit': {
@@ -45,6 +46,7 @@ const init = (): Config => {
       }
     }
   }
+  // eslint-disable-next-line no-console
   console.log('Final config is', config);
 
   return config;

@@ -20,6 +20,7 @@ class ClassDB {
     try {
       this.classes = JSON.parse(await fs.readFile(this.classFile, 'utf-8'));
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e, "couldn't find file RIP");
       this.classes = [];
     }
