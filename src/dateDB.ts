@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs';
-// import path from 'path';
+import path from 'path';
 
 class DateDB {
   dateFile: string = '';
@@ -7,7 +7,7 @@ class DateDB {
   date: Date = new Date();
 
   init = async () => {
-    this.dateFile = 'date.json';
+    this.dateFile = path.join(__dirname, 'date.json');
     try {
       this.date = new Date(
         JSON.parse(await fs.readFile(this.dateFile, 'utf-8')).date

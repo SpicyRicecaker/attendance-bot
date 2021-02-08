@@ -13,7 +13,6 @@ class ClassDB {
 
   constructor() {
     this.classFile = path.join(path.resolve(), 'src', 'links.json');
-    // this.init();
   }
 
   init = async () => {
