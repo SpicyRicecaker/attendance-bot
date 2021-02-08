@@ -6,11 +6,6 @@ class DateDB {
 
   date: Date = new Date();
 
-  // Try to read file for date
-  // constructor() {
-  // this.init();
-  // }
-
   init = async () => {
     this.dateFile = 'date.json';
     try {

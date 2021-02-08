@@ -6,3 +6,12 @@ export interface studentClass {
   end: string;
   schedule: string[];
 }
+
+
+export interface Config {
+  noSubmit: boolean;
+  help: boolean;
+  error: boolean;
+  irregular: boolean;
+  redo: boolean;
+}

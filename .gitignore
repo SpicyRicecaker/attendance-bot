@@ -1,7 +1,11 @@
+# Generated files from compilation
 /node_modules
 /dist
+
+# Preserve Secrets
 /src/links.json
 /date.json
-
 /.env
-/output.txt
+
+# Not needed anymore
+# /output.txt
